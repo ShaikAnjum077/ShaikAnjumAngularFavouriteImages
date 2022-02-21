@@ -1,0 +1,29 @@
+<div class="row container-fluid" style="margin: auto" *ngIf="card">
+    <header class="card-title">{{ card.title }}</header>
+
+    <img *ngIf="card.imgURL"
+      [src]="card.imgURL"
+      class="card-img-top"
+      alt="..."
+      (click)="showData(card)" style="cursor: pointer;"
+    />
+    
+    <img *ngIf="card.imgURL==''"
+    src="assets/default.jpg"
+    class="card-img-top"
+    alt="..."
+    (click)="showData(card)" style="cursor: pointer;"
+  />
+    <div class="card-body">
+      <p class="card-text">{{ card.description }}</p>
+      <p class="card-text">{{ card.creator }}</p>
+      <p class="card-text" appHoverEffect="type-data">{{ card.type }}</p>
+      <p class="card-text">
+        <span
+          *ngFor="let tag of card.tags"
+          class=""   appHoverEffect="tag-data"
+          style="margin-left: 5px"
+          >{{ tag }}</span>
+      </p>
+    </div>
+</div>
